@@ -1,79 +1,93 @@
+// import * as THREE from 'three'
+// import { OrbitControls } from './jsm/controls/OrbitControls.js'
+
+// import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
+// import { RGBELoader } from './jsm/loaders/RGBELoader.js';
+
 import {OrbitControls} from 'https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js'
 import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js';
-const canvas = document.querySelector('canvas.webgl')
+import { GLTFLoader } from 'https://unpkg.com/three@0.127.0/examples/jsm/loaders/GLTFLoader.js';
+import { RGBELoader } from 'https://unpkg.com/three@0.127.0/examples/jsm/loaders/RGBELoader.js';
 
-// Scene
-const scene = new THREE.Scene()
+			let camera, scene, renderer;
 
-const textureLoader = new THREE.TextureLoader()
-const myTexture = textureLoader.load('coolTex.jpg')
+			init();
 
-// Object
-const geometry = new THREE.BoxGeometry(1,1,1)
-const geometry2 = new THREE.DodecahedronGeometry(0.5,3)
-const material = new THREE.MeshBasicMaterial({
-    map: myTexture
-})
-const boxMesh = new THREE.Mesh(geometry,material)
-const sphereMesh = new THREE.Mesh(geometry2,material)
-scene.add(boxMesh)
-// scene.add(sphereMesh)
-boxMesh.position.x = 0
-boxMesh.position.y = 0.8
-sphereMesh.position.x = -1.6
-sphereMesh.position.y = 0.5
-geometry.center()
-// Sizes
-const sizes = {
-    width:window.innerWidth,
-    height:window.innerHeight
-}
+			function init() {
 
-// Renderer gets updated each time window is resized
-window.addEventListener('resize',()=>{
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
+				const container = document.createElement( 'div' );
+				document.body.appendChild( container );
 
-    camera.aspect = sizes.width/sizes.height
-    camera.updateProjectionMatrix()
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 50 );
+				// camera.position.set( - 1.8, 0.6, 2.7 );
+                camera.position.set( - 15, 10, 15);
+				scene = new THREE.Scene();
 
-    renderer.setSize(sizes.width,sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2))
-    
-})
+				new RGBELoader()
+					//.setPath( 'textures/equirectangular/' )
+                    .setPath( './' )
+					.load( 'moonless_golf_1k.hdr', function ( texture ) {
 
-// Camera
-const camera = new THREE.PerspectiveCamera(75,sizes.width/sizes.height,0.1,100)
-camera.position.z = 3
-scene.add(camera)
+						texture.mapping = THREE.EquirectangularReflectionMapping;
 
-// Controls
-const controls = new OrbitControls(camera, canvas)
+						scene.background = texture;
+						scene.environment = texture;
 
-controls.enableZoom = false;
-controls.enableDamping = true
+						render();
 
-const renderer = new THREE.WebGLRenderer({
-    canvas: canvas,
-    alpha: true,
-})
-renderer.setSize(sizes.width,sizes.height)
-renderer.setPixelRatio(Math.min(window.devicePixelRatio,2))
+						// model
 
-const clock = new THREE.Clock()
+						const loader = new GLTFLoader().setPath( './');
+						loader.load( 'talas.gltf', async function ( gltf ) {
 
-const tick = () => {
-    const elapsedTime = clock.getElapsedTime()
-    boxMesh.rotateX(30*0.0003)
-    boxMesh.rotateY(30*0.0003)
-    sphereMesh.rotateY(30*0.0003)
-    // mesh.position.y = Math.sin(elapsedTime) *0.1
-    boxMesh.position.z = Math.sin(elapsedTime) * 1
+							const model = gltf.scene;
 
-    controls.update()
-    controls.enableDamping = true
-    renderer.render(scene,camera)
-    window.requestAnimationFrame(tick)
-};
+							// wait until the model can be added to the scene without blocking due to shader compilation
 
-tick()
+							await renderer.compileAsync( model, camera, scene );
+
+							scene.add( model );
+
+							render();
+			
+						} );
+
+					} );
+
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.toneMapping = THREE.ACESFilmicToneMapping;
+				renderer.toneMappingExposure = 1;
+				container.appendChild( renderer.domElement );
+
+				const controls = new OrbitControls( camera, renderer.domElement );
+				controls.addEventListener( 'change', render ); // use if there is no animation loop
+				controls.minDistance = 10;
+				controls.maxDistance = 40;
+				controls.target.set( 0, 0, 0 );
+				controls.update();
+
+				window.addEventListener( 'resize', onWindowResize );
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				render();
+
+			}
+
+			//
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
+
