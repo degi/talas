@@ -4,10 +4,10 @@
 // import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
 // import { RGBELoader } from './jsm/loaders/RGBELoader.js';
 
-import {OrbitControls} from 'https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js'
-import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js';
-import { GLTFLoader } from 'https://unpkg.com/three@0.127.0/examples/jsm/loaders/GLTFLoader.js';
-import { RGBELoader } from 'https://unpkg.com/three@0.127.0/examples/jsm/loaders/RGBELoader.js';
+import {OrbitControls} from 'https://unpkg.com/three@0.172.0/examples/jsm/controls/OrbitControls.js'
+import * as THREE from 'https://unpkg.com/three@0.172.0/build/three.module.js';
+import { GLTFLoader } from 'https://unpkg.com/three@0.172.0/examples/jsm/loaders/GLTFLoader.js';
+import { RGBELoader } from 'https://unpkg.com/three@0.172.0/examples/jsm/loaders/RGBELoader.js';
 
 			let camera, scene, renderer;
 
@@ -28,7 +28,7 @@ import { RGBELoader } from 'https://unpkg.com/three@0.127.0/examples/jsm/loaders
 				renderer.toneMapping = THREE.ACESFilmicToneMapping;
 				renderer.toneMappingExposure = 1;
 				container.appendChild( renderer.domElement );
-				
+
 				new RGBELoader()
 					//.setPath( 'textures/equirectangular/' )
                     .setPath( './' )
