@@ -22,7 +22,13 @@ import { RGBELoader } from 'https://unpkg.com/three@0.127.0/examples/jsm/loaders
 				// camera.position.set( - 1.8, 0.6, 2.7 );
                 camera.position.set( - 15, 10, 15);
 				scene = new THREE.Scene();
-
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.toneMapping = THREE.ACESFilmicToneMapping;
+				renderer.toneMappingExposure = 1;
+				container.appendChild( renderer.domElement );
+				
 				new RGBELoader()
 					//.setPath( 'textures/equirectangular/' )
                     .setPath( './' )
@@ -55,12 +61,7 @@ import { RGBELoader } from 'https://unpkg.com/three@0.127.0/examples/jsm/loaders
 
 					} );
 
-				renderer = new THREE.WebGLRenderer( { antialias: true } );
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				renderer.toneMapping = THREE.ACESFilmicToneMapping;
-				renderer.toneMappingExposure = 1;
-				container.appendChild( renderer.domElement );
+
 
 				const controls = new OrbitControls( camera, renderer.domElement );
 				controls.addEventListener( 'change', render ); // use if there is no animation loop
