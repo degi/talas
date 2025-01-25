@@ -32,7 +32,7 @@ import { RGBELoader } from 'https://unpkg.com/three@0.172.0/examples/jsm/loaders
 				new RGBELoader()
 					//.setPath( 'textures/equirectangular/' )
                     .setPath( './' )
-					.load( 'moonless_golf_1k.hdr', function ( texture ) {
+					.load( 'sky.hdr', function ( texture ) {
 
 						texture.mapping = THREE.EquirectangularReflectionMapping;
 
