@@ -37,7 +37,8 @@ import { RGBELoader } from 'https://unpkg.com/three@0.127.0/examples/jsm/loaders
 
 						// model
 
-						const loader = new GLTFLoader().setPath( './');
+						// const loader = new GLTFLoader().setPath( './');
+						const loader = new GLTFLoader();
 						loader.load( 'talas.gltf', async function ( gltf ) {
 
 							const model = gltf.scene;
