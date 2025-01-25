@@ -12,6 +12,7 @@
   "dependencies": {
     "commander": "^13.1.0",
     "node": "^18.20.6",
+    "npm": "^11.0.0",
     "three": "^0.172.0"
   },
   "devDependencies": {
