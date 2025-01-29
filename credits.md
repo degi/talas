@@ -5,3 +5,4 @@ This work is based on:
 - "Low poly character (rigged)" (https://skfb.ly/CJIr) by Sebastian Lague is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 - "LowPoly Trees Set" (https://skfb.ly/opLRZ) by Tarun_xx is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 - "Woman 02 - Mythical Beasts Jousting Assets" (https://skfb.ly/69Q6E) by ikapoura is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+- https://polyhaven.com/a/syferfontein_1d_clear by Greg Zaal is licensed underCC0
