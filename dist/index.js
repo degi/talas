@@ -32,7 +32,7 @@ import { RGBELoader } from 'https://unpkg.com/three@0.172.0/examples/jsm/loaders
 				new RGBELoader()
 					//.setPath( 'textures/equirectangular/' )
                     .setPath( './' )
-					.load( 'sky.hdr', function ( texture ) {
+					.load( 'sky_half.hdr', function ( texture ) {
 
 						texture.mapping = THREE.EquirectangularReflectionMapping;
 
@@ -45,7 +45,7 @@ import { RGBELoader } from 'https://unpkg.com/three@0.172.0/examples/jsm/loaders
 
 						// const loader = new GLTFLoader().setPath( './');
 						const loader = new GLTFLoader();
-						loader.load( 'talas.gltf', async function ( gltf ) {
+						loader.load( 'talas.glb', async function ( gltf ) {
 
 							const model = gltf.scene;
 
