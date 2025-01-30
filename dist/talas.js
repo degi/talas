@@ -1,8 +1,14 @@
-import * as THREE from 'three'
-import { OrbitControls } from './jsm/controls/OrbitControls.js'
-import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
-import { RGBELoader } from './jsm/loaders/RGBELoader.js';
-import { CSS2DRenderer, CSS2DObject } from './jsm/renderers/CSS2DRenderer.js';
+// import * as THREE from 'three'
+// import { OrbitControls } from './jsm/controls/OrbitControls.js'
+// import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
+// import { RGBELoader } from './jsm/loaders/RGBELoader.js';
+// import { CSS2DRenderer, CSS2DObject } from './jsm/renderers/CSS2DRenderer.js';
+
+import * as THREE from 'three';
+import { OrbitControls } from 'https://unpkg.com/three@0.172.0/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'https://unpkg.com/three@0.172.0/examples/jsm/loaders/GLTFLoader.js';
+import { RGBELoader } from 'https://unpkg.com/three@0.172.0/examples/jsm/loaders/RGBELoader.js';
+import { CSS2DRenderer, CSS2DObject } from 'https://unpkg.com/three@0.172.0/examples/jsm/renderers/CSS2DRenderer.js';
 
 let camera, scene, renderer, labelRenderer;
 let labels = [{ id: "forcastree", arrow: "left", text: "FORCAS<b>TREE</b>", desc: "forcastree" },
