@@ -1,14 +1,24 @@
-.box_label {
-    font-size: 1.2em;
+body {
+    font-size: 1em;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.box_label {
+    font-size: 1Sem;
+    background-color: rgba(255, 255, 255, 0.6);
     color: black;
+    border: 3px solid white;
     text-align: center;
     padding: 5px 10px;
-    border-radius: 6px;
+    border-radius: 8px;
     position: absolute;
     z-index: 1;
     cursor: pointer;
+    display: flex;
+    align-items:center;
 }
 
 .box_label_left::after {
@@ -17,10 +27,10 @@
     top: 50%;
     right: 100%;
     /* To the left of the tooltip */
-    margin-top: -6px;
-    border-width: 6px;
+    margin-top: -10px;
+    border-width: 10px;
     border-style: solid;
-    border-color: transparent rgba(255, 255, 255, 0.5) transparent transparent;
+    border-color: transparent white transparent transparent;
 }
 
 .box_label_right::after {
@@ -29,15 +39,18 @@
     top: 50%;
     left: 100%;
     /* To the right of the tooltip */
-    margin-top: -5px;
-    border-width: 5px;
+    margin-top: -10px;
+    border-width: 10px;
     border-style: solid;
-    border-color: transparent transparent transparent rgba(255, 255, 255, 0.5);
+    border-color: transparent transparent transparent white;
+}
+
+.box_label:hover {
+    background-color: rgba(255, 255, 255, 1);
 }
 
 .box_desc {
-    font-size: 1.2em;
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
     background-color: rgba(255, 255, 255, 0.9);
     color: black;
     text-align: left;
@@ -51,8 +64,77 @@
     right: 0;
     margin-inline: auto;
     z-index: 50;
-
     visibility:hidden;
     opacity: 0;
     transition:opacity 0.5s linear;
+    overflow-y: auto;
+}
+
+.box_link {
+    font-size: 1.1em;
+    margin: 10px 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.box_link:hover {
+    background-color: lightgray;
+}
+
+.section_label {
+    color: gray;
+    font-size: 0.9em;
+}
+
+.clear{
+    clear:both;
+}
+
+.page_title {
+    float: left;
+    font-size: 1.5em;
+}
+
+.talas_link {
+    float: right;
+    color: gray;
+    cursor: pointer;
+}
+
+.talas_link:hover {
+    color: black;
+}
+
+.box_header {
+    padding-bottom: 5px;
+}
+
+.page_desc {
+    display: block;
+}
+
+#footer {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    z-index: 100;
+}
+
+#footer h1 {
+    display: inline;
+    font-size: 1.2em;
+}
+
+#footer_text:hover {
+    color: lightgreen;
+}
+
+#about:hover {
+    filter: invert(48%) sepia(79%) saturate(247%) hue-rotate(86deg) brightness(118%) contrast(119%);
 }
