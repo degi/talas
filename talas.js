@@ -40,12 +40,6 @@ const forcastree_desc =
     '<p>FORCASTREE is a spatially explicit individual-based model that simulates the growth of individual trees in a mixed-species forest or agroforestry system. The model simulates the growth of individual trees in a mixed-species forest or agroforestry system. The model can be used to explore the growth of individual trees and the overall stand dynamics under different management scenarios.</p>' +
     'The original SExI-FS is available at: <a href="https://sourceforge.net/projects/sexifs.ecomodels.p/">https://sourceforge.net/projects/sexifs.ecomodels.p/</a>'
 
-// import * as THREE from 'three'
-// import { OrbitControls } from './jsm/controls/OrbitControls.js'
-// import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
-// import { RGBELoader } from './jsm/loaders/RGBELoader.js';
-// import { CSS2DRenderer, CSS2DObject } from './jsm/renderers/CSS2DRenderer.js';
-
 import * as THREE from 'three'
 import { OrbitControls } from 'https://unpkg.com/three@0.172.0/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'https://unpkg.com/three@0.172.0/examples/jsm/loaders/GLTFLoader.js'
@@ -82,7 +76,7 @@ let labels = [
         desc: rfallow_desc,
         logo: 'rfallow_logo.png',
     },
-    { id: 'wanulcas', arrow: 'left', text: 'WaNuLCAS', desc: wanulcas_desc, logo: '' },
+    { id: 'wanulcas', arrow: 'left', text: 'WaNuLCAS', desc: wanulcas_desc, logo: 'wanulcas_logo.svg' },
     {
         id: 'abacus',
         arrow: 'left',
